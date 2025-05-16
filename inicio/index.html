@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Faz a página ocupar toda a altura da tela */
+            margin: 0; /* Remove margens padrão */
+            background-color: #f0f2f5; /* Um cinza claro para o fundo */
+            color: #333; /* Cor do texto principal */
+            text-align: center; /* Centraliza o texto dentro do body */
+        }
+
+        .container {
+            padding: 30px 40px;
+            background-color: #ffffff; /* Fundo branco para o conteúdo */
+            border-radius: 8px; /* Bordas arredondadas */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+            max-width: 600px; /* Largura máxima para o conteúdo */
+            width: 90%; /* Responsividade */
+        }
+
+        h1 {
+            color: #007bff; /* Um azul vibrante para o título */
+            margin-bottom: 20px;
+            font-size: 2.2em; /* Tamanho do título */
+        }
+
+        p {
+            font-size: 1.1em; /* Tamanho do parágrafo */
+            line-height: 1.6;
+            color: #555; /* Cor de texto um pouco mais clara */
+            margin-bottom: 30px;
+        }
+
+        .action-button {
+            display: inline-block; /* Permite padding e margin */
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff; /* Texto branco */
+            background-color: #28a745; /* Verde para o botão de ação */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* Remove sublinhado de link */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .action-button:hover {
+            background-color: #218838; /* Verde mais escuro no hover */
+            transform: translateY(-2px); /* Efeito de "levantar" o botão */
+        }
+
+        .action-button:active {
+            transform: translateY(0); /* Botão volta ao normal ao clicar */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo(a)!</h1>
+        <p>Esta é a sua página inicial. A partir daqui, você pode acessar outras seções do seu projeto.</p>
+        <a href="../inicio/vendas.html" class="action-button">Acessar Vendas</a>
+        </div>
+
+        <div class="container">
+        <a href="../inicio/vendas.html" class="action-button">Acessar Vendas</a>
+        </div>
+</body>
+</html>
