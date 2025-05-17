@@ -3,46 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_vendas.css"/>
     <title>Visualizador de Dados da Planilha</title>
-    <style>
-        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; box-shadow: 0 2px 3px rgba(0,0,0,0.1); }
-        th, td { border: 1px solid #cccccc; padding: 10px; text-align: left; }
-        th { background-color: #f2f2f2; font-weight: bold; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        tr:hover { background-color: #f1f1f1; }
-        button {
-            background-color: #28a745; /* Verde mais vibrante */
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        #tabelaContainer {
-            margin-top: 20px;
-            overflow-x: auto; /* Para tabelas largas em telas pequenas */
-        }
-        .loading-message, .error-message {
-            color: #555;
-            font-style: italic;
-            padding: 10px;
-            border: 1px dashed #ccc;
-            background-color: #f9f9f9;
-        }
-        .error-message {
-            color: #D8000C;
-            background-color: #FFD2D2;
-            border-color: #D8000C;
-        }
-    </style>
-</head>
+    </head>
 <body>
 
     <h1>Dados da Sua Planilha Google</h1>
@@ -54,7 +17,7 @@
 
     <script>
         document.getElementById('loadDataBtn').addEventListener('click', function() {
-            // URL da sua planilha publicada como CSV (já fornecida por você)
+            // URL da sua planilha publicada como CSV
             const urlPlanilhaPublicadaCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRIfu_bkc8cu1dNbItO9zktGmn4JjNjQEoLAzGcG9rZDyfDyDp4ISEqpPKzIFTWFrMNVIz05V3NTpGT/pub?gid=0&single=true&output=csv';
 
             const tabelaContainer = document.getElementById('tabelaContainer');
@@ -65,22 +28,20 @@
                     if (!response.ok) {
                         throw new Error(`Erro ao buscar a planilha. Status: ${response.status}. Verifique se a URL está correta e se a planilha continua publicada como CSV.`);
                     }
-                    return response.text(); // Pega o conteúdo do CSV como texto
+                    return response.text();
                 })
                 .then(csvText => {
-                    tabelaContainer.innerHTML = ''; // Limpa a mensagem de "Carregando"
+                    tabelaContainer.innerHTML = '';
                     const table = document.createElement('table');
-                    const rows = csvText.trim().split(/\r?\n/); // Divide o texto CSV em linhas (lida com \n e \r\n)
+                    const rows = csvText.trim().split(/\r?\n/);
 
                     if (rows.length === 0 || (rows.length === 1 && rows[0].trim() === '')) {
                         tabelaContainer.innerHTML = '<p class="error-message">Nenhum dado encontrado na planilha publicada ou a planilha está vazia.</p>';
                         return;
                     }
 
-                    // Cria o cabeçalho da tabela (thead)
                     const thead = table.createTHead();
                     const headerRow = thead.insertRow();
-                    // Assume que a primeira linha do CSV são os cabeçalhos
                     const headers = parseCSVRow(rows[0]);
                     headers.forEach(headerText => {
                         const th = document.createElement('th');
@@ -88,10 +49,9 @@
                         headerRow.appendChild(th);
                     });
 
-                    // Cria o corpo da tabela (tbody)
                     const tbody = table.createTBody();
-                    for (let i = 1; i < rows.length; i++) { // Começa da segunda linha para os dados
-                        if (rows[i].trim() === '') continue; // Pula linhas em branco
+                    for (let i = 1; i < rows.length; i++) {
+                        if (rows[i].trim() === '') continue;
                         
                         const dataCells = parseCSVRow(rows[i]);
                         const tr = tbody.insertRow();
@@ -108,8 +68,6 @@
                 });
         });
 
-        // Função auxiliar para parsear uma linha CSV.
-        // Lida com campos entre aspas que podem conter vírgulas.
         function parseCSVRow(rowString) {
             const result = [];
             let currentField = '';
@@ -117,12 +75,11 @@
             for (let i = 0; i < rowString.length; i++) {
                 const char = rowString[i];
                 if (char === '"') {
-                    // Se a próxima aspa é uma aspa dupla (escape), adiciona uma aspa ao campo
                     if (inQuotes && i + 1 < rowString.length && rowString[i+1] === '"') {
                         currentField += '"';
-                        i++; // Pula a segunda aspa do par de escape
+                        i++;
                     } else {
-                        inQuotes = !inQuotes; // Alterna o estado de estar dentro/fora das aspas
+                        inQuotes = !inQuotes;
                     }
                 } else if (char === ',' && !inQuotes) {
                     result.push(currentField);
@@ -131,8 +88,8 @@
                     currentField += char;
                 }
             }
-            result.push(currentField); // Adiciona o último campo
-            return result; // Não faz trim aqui, pois pode ser importante para alguns dados
+            result.push(currentField);
+            return result;
         }
     </script>
 

@@ -1,0 +1,122 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4; /* Um tom de cinza mais claro para melhor contraste */
+    color: #333;
+    line-height: 1.6;
+    display: flex; /* Para centralizar o conteúdo principal na tela, se desejar */
+    flex-direction: column; /* Garante que os elementos internos (header, main, footer) fiquem em coluna */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da viewport */
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 30px 20px; /* Aumentei um pouco o padding vertical para mais espaço */
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 30px; /* Aumentei um pouco a margem inferior para mais espaço */
+}
+
+header h1 {
+    margin-top: 0;
+    font-size: 2.8em; /* Aumentei um pouco a fonte para mais destaque */
+    margin-bottom: 5px; /* Adicionei um pouco de margem abaixo do título */
+}
+
+header .subtitle {
+    font-size: 1.2em; /* Aumentei um pouco a fonte da legenda */
+    color: #ddd;
+}
+
+main {
+    background-color: white;
+    padding: 30px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Permite que o main cresça para ocupar o espaço restante */
+}
+
+section {
+    margin-bottom: 40px; /* Aumentei um pouco a margem inferior para mais separação */
+}
+
+section h2 {
+    color: #007bff;
+    border-bottom: 3px solid #007bff; /* Tornei a linha inferior um pouco mais espessa */
+    padding-bottom: 12px; /* Aumentei um pouco o padding inferior */
+    margin-bottom: 20px; /* Aumentei um pouco a margem inferior */
+    font-size: 2.2em; /* Aumentei um pouco a fonte do título da seção */
+}
+
+section p {
+    margin-bottom: 1.2em; /* Aumentei um pouco a margem inferior dos parágrafos */
+}
+
+.divider {
+    border-top: 1px solid #ccc; /* Mudei para border-top para melhor separação visual */
+    margin: 30px 0; /* Aumentei um pouco a margem vertical */
+}
+
+footer {
+    text-align: center;
+    padding: 20px 10px; /* Aumentei um pouco o padding vertical */
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 30px; /* Adicionei margem superior para separação */
+}
+
+.fa-code,
+.fa-user,
+.fa-heart,
+.fa-laptop-code {
+    margin-right: 8px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px; /* Aumentei um pouco o espaçamento entre os botões */
+    justify-content: center; /* Centralizei os botões */
+}
+
+.buttons button {
+    padding: 12px 24px; /* Aumentei um pouco o padding dos botões */
+    border-radius: 25px; /* Arredondamento um pouco maior */
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionei transição na cor do texto também */
+}
+
+.projetos {
+    background: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+
+.projetos:hover {
+    background-color: #0056b3; /* Tom de azul um pouco mais escuro no hover */
+}
+
+.container {
+    text-align: center;
+    margin-top: 40px; /* Aumentei um pouco a margem superior */
+}
+
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 28px; /* Aumentei um pouco o padding */
+    text-decoration: none;
+    font-size: 18px; /* Aumentei um pouco a fonte */
+    border: none;
+    border-radius: 10px; /* Arredondamento um pouco maior */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Adicionei transição no box-shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aumento sutil na sombra */
+}
+
+.action-button:hover {
+    background-color: #0056b3; /* Tom de azul um pouco mais escuro no hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Aumento sutil na sombra no hover */
+}
